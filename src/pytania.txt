@@ -1,0 +1,15 @@
+1. Czy okno główne otwiera okna podrzędne bez zamykania aplikacji?
+Tak, okno główne ma EXIT_ON_CLOSE, więc jego zamknięcie kończy program. Okna podrzędne mają DISPOSE_ON_CLOSE, więc zamknięcie ich tylko zwalnia to jedno okno, a reszta aplikacji działa dalej. Gdyby podokna miały EXIT_ON_CLOSE, zamknięcie któregokolwiek wyłączyłoby cały program.
+
+2. FlowLayout vs GridLayout przy zmianie rozmiaru okna
+Przy flowLayout przyciski zachowują swój rozmiar, a przy zwężaniu okna przechodzą do następnego wiersza. Natomiast gridLayout jest siatką stałą, a przyciski rozciągają się razem z oknem.
+
+3. Przycisk „Anuluj” obok „Zaloguj”
+Wystarczy dodać drugi przycisk w tym samym wierszu, w sąsiedniej kolumnie.
+
+java
+c.gridx = 2;
+c.gridy = 2;
+okno.add(anuluj, c);
+
+„Zaloguj” jest w gridx = 1, a „Anuluj” w gridx = 2, oba w gridy = 2. Przycisk „Anuluj” ma też listener, który zamyka okno przez okno.dispose().
